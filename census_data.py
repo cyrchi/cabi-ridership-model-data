@@ -21,6 +21,7 @@ References:
 7. https://towardsdatascience.com/scraping-us-census-data-via-cenpy-9aeab12c877e
 8. https://geopandas.org/reference.html#geopandas.GeoDataFrame.to_file
 9. https://geopandas.org/io.html
+10. https://nbviewer.jupyter.org/github/cenpy-devs/cenpy/blob/master/notebooks/segregation.ipynb
 
 """
 
@@ -28,6 +29,13 @@ References:
 from cenpy import products
 import geopandas
 import matplotlib.pyplot as plot
+
+# it can be difficult to figure out what the columns you need are called. You can use cenpy to do some searching.
+# acs = cenpy.products.ACS() # gets the most recent 5-year ACS
+# acs.variables # lists ALL the column names (over 25k)
+# acs.tables # lists ALL the tables (over 600)
+# acs.filter_tables('RACE', by='description') # filter the tables by a keyword
+# acs.filter_variables('B01003') # filter variables by a table ID
 
 # get census data
 censusTracts = products.ACS(2017).from_csa(
